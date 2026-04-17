@@ -1,0 +1,80 @@
+# .gitignore — brainoutsourcing
+# This repo tracks workspace structure and skills.
+# Personal data (context/, wiki/, plans/, raw/, personal/) is
+# generated locally after /setup and NOT pushed to GitHub.
+
+# ===== PERSONAL DATA (generated after /setup) =====
+context/
+wiki/
+plans/
+raw/
+personal/
+outputs/
+
+# ===== SECRETS & CREDENTIALS =====
+.env
+.env.*
+*.key
+*.pem
+*.cert
+secrets/
+**/.secrets
+
+# ===== OS =====
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ===== PYTHON =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ===== NODE =====
+node_modules/
+.next/
+dist/
+build/
+*.tsbuildinfo
+
+# ===== EDITORS / IDEs =====
+.idea/
+.vscode/
+.cursor/
+*.swp
+*.swo
+*~
+
+# ===== OBSIDIAN =====
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/plugins/
+
+# ===== PROJECTS =====
+projects/
+!projects/_template/
+
+# ===== LOGS =====
+*.log
+logs/
+
+# ===== MCP =====
+.mcp.json
+.playwright-mcp/
+.antigravity/
