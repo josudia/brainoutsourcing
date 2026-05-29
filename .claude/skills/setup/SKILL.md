@@ -56,8 +56,10 @@ Read each template from `references/context-templates/` and replace placeholders
 - `context-templates/inbox.md` → `context/inbox.md`
 - `context-templates/brand-voice.md` → `context/brand-voice.md`
 
-Additionally, create a subfolder under `projects/` for each mentioned project:
-- `projects/{project-name-kebab}/CLAUDE.md` with goal and status "Active"
+Additionally, for each mentioned project, copy the shipped template and personalize it:
+- Copy `projects/_template/` → `projects/{project-name-kebab}/`
+- In the new `projects/{name}/CLAUDE.md`, fill the placeholders (project name, goal, status "Active")
+- Keep the copied `projects/{name}/BRAIN-HANDOFF.md` (the cross-session handoff file `/checkin` scans)
 
 ### Step 3: Set up wiki structure
 
@@ -73,12 +75,34 @@ Additionally, create a subfolder under `projects/` for each mentioned project:
 ### Step 5: Additional seed files
 
 - `.gitkeep` in `raw/_input/`, `raw/articles/`, `raw/transcripts/`, `raw/papers/`, `raw/assets/`
-- `.gitkeep` in `personal/daily/`, `personal/health/`, `personal/finance/`, `personal/learning/`
+- `.gitkeep` in `personal/daily/`, `personal/health/`, `personal/finance/`, `personal/knowledge/`, `personal/business/`, `personal/ideas/`, `personal/_img/`, `personal/private/`
+- `.gitkeep` in `plans/_concepts/`
 - `outputs/tmp/.gitkeep`
+- `personal/backlog.md` — personal focus backlog (Today / This Week / Ongoing), the user's mobile-editable counterpart to the Kanban board:
+  ```markdown
+  # Personal Backlog
+
+  > Your personal focus list — edit freely (also from mobile in Obsidian).
+
+  ## Today / Tomorrow
+
+  ## This Week
+
+  ## Ongoing / Daily
+  ```
+
+> **Note on `personal/private/`:** this folder is hard-taboo — Claude never reads, lists, or greps it (the `pre_tool_check.py` hook blocks Bash access). It is for content the user wants Claude to never see. See `.claude/rules/daten-klassifizierung.md`.
 
 ### Step 6: Personalize CLAUDE.md
 
 Read `references/claude-md-template.md` and replace all placeholders. Overwrite the existing `CLAUDE.md` in the vault root with the personalized version.
+
+Also create `AGENTS.md` in the vault root for compatibility with other agent tools (Codex, Antigravity):
+```markdown
+# AGENTS.md
+
+See [CLAUDE.md](CLAUDE.md) — it is the single source of truth for working in this vault.
+```
 
 ### Step 7: First daily log
 
@@ -121,7 +145,14 @@ management and daily use.
 
 **Optional:** Ask at the end:
 > "Would you like to integrate Apple Reminders? (macOS only, optional)"
-If yes: point to `scripts/reminders/reminders-bridge.sh` and how to set up list IDs.
+If yes: point to `scripts/reminders/reminders-bridge.sh`. The bridge reads two
+environment variables for the list IDs — have the user export them (e.g. in their
+shell profile):
+```bash
+export BRAINOUTSOURCING_TASKS_LIST_ID="<your-tasks-list-id>"
+export BRAINOUTSOURCING_NIGHTSHIFT_LIST_ID="<your-nightshift-list-id>"
+```
+Find a list's ID by running `scripts/reminders/reminders-bridge.sh list-all`.
 
 ---
 

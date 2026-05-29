@@ -22,7 +22,7 @@ Multiple project sessions can run in parallel (e.g. projectA + projectB + projec
 |---|---|---|
 | `<vault>/plans/wip.md` | Main session | read only |
 | `<vault>/plans/backlog.md` | Main session | read only |
-| `<vault>/context/wip.md`, `open-loops.md`, `inbox.md`, `personal-info.md`, `business-info.md`, `strategy.md`, `current-data.md`, `brand-voice.md` | Main session | read only |
+| `<vault>/context/open-loops.md`, `inbox.md`, `personal-info.md`, `business-info.md`, `strategy.md`, `current-data.md`, `brand-voice.md` | Main session | read only |
 | `<vault>/personal/daily/YYYY-MM-DD.md` | Main session | read only |
 | `<vault>/personal/backlog.md` | The user (manual edit) + Main session | Project sessions read only |
 | `<vault>/wiki/**` | Main session | read only |

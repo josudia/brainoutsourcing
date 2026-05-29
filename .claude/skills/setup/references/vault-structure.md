@@ -14,12 +14,17 @@ mkdir -p raw/transcripts
 mkdir -p raw/papers
 mkdir -p raw/assets
 mkdir -p reference
+mkdir -p personal/private
 mkdir -p personal/daily
 mkdir -p personal/health
 mkdir -p personal/finance
-mkdir -p personal/learning
+mkdir -p personal/knowledge
+mkdir -p personal/business
+mkdir -p personal/ideas
+mkdir -p personal/_img
+mkdir -p plans/_concepts
 mkdir -p outputs/tmp
-mkdir -p projects/_template
+# projects/_template ships with the repo — copy it per project (see below)
 ```
 
 ## Files to create
@@ -37,6 +42,13 @@ mkdir -p projects/_template
 | `wiki/log.md` | Inline (setup entry) | DATE |
 | `plans/wip.md` | Inline (empty template) | — |
 | `plans/backlog.md` | Inline (with projects as tasks) | PROJECTS, WEEK, DATE |
+| `personal/backlog.md` | Inline (personal focus backlog) | — |
 | `personal/daily/{{DATE}}.md` | Inline (first daily log) | DATE, PROJECTS |
-| `projects/{name}/CLAUDE.md` | Inline (per project) | Project name, goal |
+| `projects/{name}/` | Copy of `projects/_template/` | then fill CLAUDE.md placeholders |
+| `AGENTS.md` | Inline (pointer to CLAUDE.md) | — |
 | `CLAUDE.md` | `claude-md-template.md` | NAME, DESCRIPTION, PROJECTS |
+
+## Notes
+
+- `personal/private/` is a **hard-taboo** folder: Claude never reads, lists, or greps it (the `pre_tool_check.py` hook enforces this for Bash). See `.claude/rules/daten-klassifizierung.md`.
+- `reference/wiki-schema.md` and `projects/_template/` ship with the repo — they already exist on a fresh clone, so setup does not generate them; it only copies `_template` per project.

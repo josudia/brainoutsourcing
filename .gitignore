@@ -67,8 +67,11 @@ build/
 .obsidian/plugins/
 
 # ===== PROJECTS =====
-projects/
+# Ignore all projects EXCEPT the tracked _template skeleton.
+# (Use projects/* not projects/ so the negation below can re-include _template.)
+projects/*
 !projects/_template/
+!projects/_template/**
 
 # ===== LOGS =====
 *.log
@@ -80,4 +83,6 @@ logs/
 .antigravity/
 
 # ===== SESSION-LOCAL HANDOFF (never public) =====
-BRAIN-HANDOFF.md
+# Only the vault-root handoff is ignored; the tracked template skeleton
+# (projects/_template/BRAIN-HANDOFF.md) and per-project ones stay as intended.
+/BRAIN-HANDOFF.md
