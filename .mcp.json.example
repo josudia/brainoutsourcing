@@ -1,0 +1,12 @@
+{
+  "_comment": "Copy this file to .mcp.json to enable MCP servers. .mcp.json is gitignored so your local config stays private. The Playwright server below powers the browser-automation skills; remove it if you don't need browser control.",
+  "mcpServers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    }
+  }
+}
